@@ -7,7 +7,7 @@ function App() {
   return (
     <div >
       <CreateLink />
-      <LinkList />
+      <Link
     </div>
   );
 }
