@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import LinkList from './LinkList';
-import CreateLink from './CreateLink';
+import { Link, useNavigate } from "react-router-dom";
+import { AUTH_TOKEN } from "../constants";
 
 export default function Header() {
+   const navigate = useNavigate();
+   const authToken = localStorage.getItem(AUTH_TOKEN);
   return (
     <div className="flex pa1 justify-between nowrap orange">
       <div className="flex flex-fixed black">
@@ -11,12 +12,40 @@ export default function Header() {
           <div className="fw7 mr1">Hacker News</div>
         </Link>
         <Link to="/" className="ml1 no-underline black">
-         new
+          new
         </Link>
         <div className="ml1">|</div>
-        <Link to="/create" className="ml1 no-underline black">
-        submit
+        <Link to="/search" className="ml1 no-underline black">
+          search
         </Link>
+        <Link to="/create" className="ml1 no-underline black">
+          submit
+        </Link>
+        {authToken && (
+          <div className="flex">
+            <div className="ml1">|</div>
+            <Link to="/create" className="ml1 no-underline black">
+              submit
+            </Link>
+          </div>
+        )}
+      </div>
+      <div className="flex flex-fixed">
+        {authToken ? (
+          <div
+            className="ml1 pointer black"
+            onClick={() => {
+              localStorage.removeItem(AUTH_TOKEN);
+              navigate(`/`);
+            }}
+          >
+            logout
+          </div>
+        ) : (
+          <Link to="/login" className="ml1 no-underline black">
+            login
+          </Link>
+        )}
       </div>
     </div>
   );
