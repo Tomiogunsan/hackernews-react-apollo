@@ -26,15 +26,15 @@ export default function CreateLink() {
     });
   return (
     <div>
-      <form 
-      onSubmit={(e) => {
-        e.preventDefault();
-        createLink();
-      }}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          createLink();
+        }}
       >
-        <div>
+        <div className="flex flex-column mt3">
           <input
-            className=""
+            className="mb2"
             value={formState.description}
             onChange={(e) =>
               setFormState({
