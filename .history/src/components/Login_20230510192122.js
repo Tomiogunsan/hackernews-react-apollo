@@ -1,4 +1,4 @@
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AUTH_TOKEN } from '../constants';
@@ -44,7 +44,7 @@ export default function Login() {
         email: formState.email,
         password: formState.password,
       },
-      onCompleted: ({signup}) => {
+      onCompleted: ({  }) => {
         localStorage.setItem(AUTH_TOKEN, signup.token);
         navigate("/");
       },

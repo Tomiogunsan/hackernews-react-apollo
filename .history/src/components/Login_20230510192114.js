@@ -1,4 +1,4 @@
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AUTH_TOKEN } from '../constants';
@@ -38,17 +38,7 @@ export default function Login() {
       },
     });
 
-    const [signup] = useMutation(SIGNUP_MUTATION, {
-      variables: {
-        name: formState.name,
-        email: formState.email,
-        password: formState.password,
-      },
-      onCompleted: ({signup}) => {
-        localStorage.setItem(AUTH_TOKEN, signup.token);
-        navigate("/");
-      },
-    });
+    
   return (
     <div>
       <h4 className="mv3">{formState.login ? "Login" : "Sign Up"}</h4>
