@@ -1,11 +1,10 @@
-
+import logo from './logo.svg';
 import './App.css';
-import LinkList from './components/LinkList';
 
 function App() {
   return (
-    <div >
-      <LinkList />
+    <div className="App">
+      
     </div>
   );
 }

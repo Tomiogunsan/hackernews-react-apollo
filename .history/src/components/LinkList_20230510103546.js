@@ -18,10 +18,10 @@ const FEED_QUERY = gql`
 ;
 
 export default function LinkList() {
-     const { data } = useQuery(FEED_QUERY);
+     const 
   return (
     <div>
-        {data?.feed?.links?.map((link) => (
+        {linksToRender.map((link) => (
             <Link key={link.id} link={link} />
         ))}
     </div>
