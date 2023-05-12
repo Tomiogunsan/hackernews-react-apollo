@@ -11,10 +11,19 @@ const FEED_QUERY = gql`
         createdAt
         url
         description
+         postedBy {
+          id
+          name
+        }
+        votes {
+          id
+          user {
+            id
+          }
       }
     }
   }
-`
+`;
 ;
 
 export default function LinkList() {
