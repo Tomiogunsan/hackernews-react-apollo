@@ -34,12 +34,7 @@ export default function Link({link}) {
      },
      update: (cache, {data: {vote}}) => {
       const { feed } = cache.readQuery({
-        query: FEED_QUERY,
-        variables: {
-          take,
-          skip,
-          orderBy,
-        },
+        query: FEED_QUERY
       });
 
       const updatedLinks = feed.links.map((feedLink) => {
@@ -56,14 +51,9 @@ export default function Link({link}) {
         query: FEED_QUERY,
         data: {
           feed: {
-            links: updatedLinks,
-          },
-        },
-        variables: {
-          take,
-          skip,
-          orderBy,
-        },
+            links: updatedLinks
+          }
+        }
       });
     }
   });

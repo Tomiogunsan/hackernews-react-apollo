@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from './Link';
 import { useQuery, gql } from "@apollo/client";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { LINKS_PER_PAGE } from "../constants";
 export const FEED_QUERY = gql`
   query FeedQuery($take: Int, $skip: Int, $orderBy: LinkOrderByInput) {
@@ -51,7 +51,6 @@ const NEW_LINKS_SUBSCRIPTION = gql`
 
 export default function LinkList() {
     const location = useLocation();
-     const navigate = useNavigate();
     const isNewPage = location.pathname.includes("new");
     const getQueryVariables = (isNewPage, page) => {
       const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;

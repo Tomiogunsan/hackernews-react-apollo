@@ -33,11 +33,6 @@ export default function CreateLink() {
          const orderBy = { createdAt: "desc" };
         const data = cache.readQuery({
           query: FEED_QUERY,
-          variables: {
-            take,
-            skip,
-            orderBy,
-          },
         });
 
         cache.writeQuery({
@@ -46,11 +41,6 @@ export default function CreateLink() {
             feed: {
               links: [post, ...data.feed.links],
             },
-          },
-          variables: {
-            take,
-            skip,
-            orderBy,
           },
         });
       },

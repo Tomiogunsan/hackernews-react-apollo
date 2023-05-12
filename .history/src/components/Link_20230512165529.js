@@ -56,14 +56,14 @@ export default function Link({link}) {
         query: FEED_QUERY,
         data: {
           feed: {
-            links: updatedLinks,
-          },
+            links: updatedLinks
+          }
         },
-        variables: {
-          take,
-          skip,
-          orderBy,
-        },
+         variables: {
+        take,
+        skip,
+        orderBy
+      }
       });
     }
   });

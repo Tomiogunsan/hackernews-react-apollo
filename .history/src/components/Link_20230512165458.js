@@ -36,10 +36,10 @@ export default function Link({link}) {
       const { feed } = cache.readQuery({
         query: FEED_QUERY,
         variables: {
-          take,
-          skip,
-          orderBy,
-        },
+        take,
+        skip,
+        orderBy
+      }
       });
 
       const updatedLinks = feed.links.map((feedLink) => {
@@ -56,14 +56,9 @@ export default function Link({link}) {
         query: FEED_QUERY,
         data: {
           feed: {
-            links: updatedLinks,
-          },
-        },
-        variables: {
-          take,
-          skip,
-          orderBy,
-        },
+            links: updatedLinks
+          }
+        }
       });
     }
   });
