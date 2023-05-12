@@ -2,7 +2,7 @@ import React from 'react'
 import Link from './Link';
 import { useQuery, gql } from "@apollo/client";
 
-const FEED_QUERY = gql`
+export const FEED_QUERY = gql`
   {
     feed {
       id
@@ -11,7 +11,7 @@ const FEED_QUERY = gql`
         createdAt
         url
         description
-         postedBy {
+        postedBy {
           id
           name
         }
@@ -20,11 +20,11 @@ const FEED_QUERY = gql`
           user {
             id
           }
+        }
       }
     }
   }
 `;
-;
 
 export default function LinkList() {
      const { data } = useQuery(FEED_QUERY);
