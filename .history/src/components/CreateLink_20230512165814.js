@@ -47,11 +47,7 @@ export default function CreateLink() {
               links: [post, ...data.feed.links],
             },
           },
-          variables: {
-            take,
-            skip,
-            orderBy,
-          },
+          
         });
       },
       onCompleted: () => navigate("/"),

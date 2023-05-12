@@ -1,5 +1,5 @@
 import React from "react";
-import { AUTH_TOKEN, LINKS_PER_PAGE } from "../constants";
+import { AUTH_TOKEN } from "../constants";
 import { timeDifferenceForDate } from "./utils";
 import { gql, useMutation } from "@apollo/client";
 import { FEED_QUERY } from "./LinkList";
@@ -25,21 +25,13 @@ const VOTE_MUTATION = gql`
 `;
 
 export default function Link({link}) {
-  const take = LINKS_PER_PAGE;
-  const skip = 0;
-  const orderBy = { createdAt: "desc" };
    const [vote] = useMutation(VOTE_MUTATION, {
      variables: {
        linkId: link.id,
      },
      update: (cache, {data: {vote}}) => {
       const { feed } = cache.readQuery({
-        query: FEED_QUERY,
-        variables: {
-          take,
-          skip,
-          orderBy,
-        },
+        query: FEED_QUERY
       });
 
       const updatedLinks = feed.links.map((feedLink) => {
@@ -56,14 +48,9 @@ export default function Link({link}) {
         query: FEED_QUERY,
         data: {
           feed: {
-            links: updatedLinks,
-          },
-        },
-        variables: {
-          take,
-          skip,
-          orderBy,
-        },
+            links: updatedLinks
+          }
+        }
       });
     }
   });
