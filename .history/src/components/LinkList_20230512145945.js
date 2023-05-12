@@ -52,7 +52,7 @@ export default function LinkList() {
   // ...
 
   subscribeToMore({
-    document: NEW_LINKS_SUBSCRIPTION,
+  document:
     updateQuery: (prev, { subscriptionData }) => {
       if (!subscriptionData.data) return prev;
       const newLink = subscriptionData.data.newLink;
