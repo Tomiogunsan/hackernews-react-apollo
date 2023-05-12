@@ -32,7 +32,7 @@ export default function Login() {
         email: formState.email,
         password: formState.password,
       },
-      onCompleted: ({ login }) => {
+      onCompleted: ({login}) => {
         localStorage.setItem(AUTH_TOKEN, login.token);
         navigate("/");
       },
