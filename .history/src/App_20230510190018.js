@@ -5,7 +5,6 @@ import CreateLink from './components/CreateLink';
 import Header from './components/Header';
 import LinkList from './components/LinkList';
 import Login from './components/Login';
-import Search from './components/Search';
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
           <Route path="/" element={<LinkList />} />
           <Route path="/create" element={<CreateLink />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/search" element={<Search />} />
         </Routes>
       </div>
     </div>

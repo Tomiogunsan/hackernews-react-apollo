@@ -34,20 +34,14 @@ const Search = () => {
       <div>
         Search
         <input type="text" onChange={(e) => setSearchFilter(e.target.value)} />
-        <button
-          onClick={() =>
-            executeSearch({
-              variables: { filter: searchFilter },
-            })
-          }
-        >
-          OK
+        <button>
+            OK
         </button>
       </div>
-      {data &&
+      {/* {data &&
         data.feed.links.map((link, index) => (
           <Link key={link.id} link={link} index={index} />
-        ))}
+        ))} */}
     </>
   );
 };
