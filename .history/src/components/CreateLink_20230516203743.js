@@ -28,9 +28,9 @@ export default function CreateLink() {
         url: formState.url,
       },
       update: (cache, { data: { post } }) => {
-        const take = LINKS_PER_PAGE;
-        const skip = 0;
-        const orderBy = { createdAt: "desc" };
+         const take = LINKS_PER_PAGE;
+         const skip = 0;
+         const orderBy = { createdAt: "desc" };
         const data = cache.readQuery({
           query: FEED_QUERY,
           variables: {
@@ -65,18 +65,7 @@ export default function CreateLink() {
         }}
       >
         <div className="flex flex-column mt3">
-          <input
-            className="mb2"
-            value={formState.description}
-            onChange={(e) =>
-              setFormState({
-                ...formState,
-                description: e.target.value,
-              })
-            }
-            type="text"
-            placeholder="A description for the link"
-          />
+          
           <input
             className="mb2"
             value={formState.url}
