@@ -22,15 +22,11 @@ export default function CreateLink() {
         url: ''
     });
 
-    const [createLink] = useMutation(CREATE_LINK_MUTATION, {
-      variables: {
-        description: formState.description,
-        url: formState.url,
-      },
+   
       update: (cache, { data: { post } }) => {
-        const take = LINKS_PER_PAGE;
-        const skip = 0;
-        const orderBy = { createdAt: "desc" };
+         const take = LINKS_PER_PAGE;
+         const skip = 0;
+         const orderBy = { createdAt: "desc" };
         const data = cache.readQuery({
           query: FEED_QUERY,
           variables: {
