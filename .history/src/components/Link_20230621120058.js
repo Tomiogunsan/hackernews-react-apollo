@@ -3,7 +3,7 @@ import { AUTH_TOKEN, LINKS_PER_PAGE } from "../constants";
 import { timeDifferenceForDate } from "./utils";
 import { gql, useMutation } from "@apollo/client";
 import { FEED_QUERY } from "./LinkList";
-import {AiFillHeart} from 'react-icons/ai'
+import {AiFillHeart} from 'react-icons'
 
 const VOTE_MUTATION = gql`
   mutation VoteMutation($linkId: ID!) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { AUTH_TOKEN } from "../constants";
+import { AUTH_TOKEN, LINKS_PER_PAGE } from "../constants";
 import { timeDifferenceForDate } from "./utils";
 import { gql, useMutation } from "@apollo/client";
 import { FEED_QUERY } from "./LinkList";
@@ -25,13 +25,21 @@ const VOTE_MUTATION = gql`
 `;
 
 export default function Link({link}) {
+  const take = LINKS_PER_PAGE;
+  const skip = 0;
+  const orderBy = { createdAt: "desc" };
    const [vote] = useMutation(VOTE_MUTATION, {
      variables: {
        linkId: link.id,
      },
      update: (cache, {data: {vote}}) => {
       const { feed } = cache.readQuery({
-        query: FEED_QUERY
+        query: FEED_QUERY,
+        variables: {
+          take,
+          skip,
+          orderBy,
+        },
       });
 
       const updatedLinks = feed.links.map((feedLink) => {
@@ -48,9 +56,14 @@ export default function Link({link}) {
         query: FEED_QUERY,
         data: {
           feed: {
-            links: updatedLinks
-          }
-        }
+            links: updatedLinks,
+          },
+        },
+        variables: {
+          take,
+          skip,
+          orderBy,
+        },
       });
     }
   });
@@ -67,7 +80,7 @@ export default function Link({link}) {
             style={{ cursor: "pointer" }}
             onClick={vote}
           >
-            click
+            <AiFillHeart />
           </button>
         )}
       </div>

@@ -13,9 +13,7 @@ const VOTE_MUTATION = gql`
         id
         votes {
           id
-          user {
-            id
-          }
+          
         }
       }
       user {
