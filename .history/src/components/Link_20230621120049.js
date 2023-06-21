@@ -3,6 +3,7 @@ import { AUTH_TOKEN, LINKS_PER_PAGE } from "../constants";
 import { timeDifferenceForDate } from "./utils";
 import { gql, useMutation } from "@apollo/client";
 import { FEED_QUERY } from "./LinkList";
+import {}
 
 const VOTE_MUTATION = gql`
   mutation VoteMutation($linkId: ID!) {
@@ -80,7 +81,7 @@ export default function Link({link}) {
             style={{ cursor: "pointer" }}
             onClick={vote}
           >
-            click
+            <AiFillHeart />
           </button>
         )}
       </div>
